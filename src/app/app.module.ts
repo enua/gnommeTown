@@ -7,6 +7,7 @@ import { GnommeComponent } from './gnommes/gnomme/gnomme.component';
 import { GnommeListComponent } from './gnommes/gnomme-list/gnomme-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatTableModule,
     BrowserAnimationsModule
   ],
   providers: [],
