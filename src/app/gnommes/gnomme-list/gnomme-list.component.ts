@@ -1,6 +1,7 @@
 import { Gnommes, Town } from './../../models/gnommes.interface';
 import { Component, OnInit } from '@angular/core';
 import { GnommesService } from './../../services/gnommes.service';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-gnomme-list',
@@ -19,6 +20,7 @@ export class GnommeListComponent implements OnInit {
     'hair_color',
     'professions',
     'friends'];
+    selection = new SelectionModel<Gnommes>(false, []);
 
   constructor(private gnommeService: GnommesService) {
 
@@ -34,6 +36,10 @@ export class GnommeListComponent implements OnInit {
       this.gnommes = data.Brastlewark;
 
     });
+  }
+
+  handleClickRow(row: any): void {
+    console.log(row);
   }
 
 }
