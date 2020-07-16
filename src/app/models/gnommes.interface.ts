@@ -1,3 +1,6 @@
+export interface Town {
+    Brastlewark: Gnommes[];
+}
 export interface Gnommes {
  id: number;
  name: string;
