@@ -18,8 +18,9 @@ export class GnommeListComponent implements OnInit {
     'age',
     'height',
   ];
-
-    selection = new SelectionModel<Gnommes>(false, []);
+  selection = new SelectionModel<Gnommes>(false, []);
+  avgAge: number; // the average gnomme age in Town
+  avgHeight: number; // the average gnomme height in Town
 
   constructor(private gnommeService: GnommesService) {
 
@@ -28,6 +29,8 @@ export class GnommeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // TODO: Activate this service!!!
 
     /* this.gnommeService.fetchData()
     .subscribe((data: Town) => {
@@ -215,16 +218,12 @@ export class GnommeListComponent implements OnInit {
           'Midwig Magnarivet'
         ]
       }
-    ];
+    ];   
   }
 
   handleClick(row: Gnommes): void {
     console.log(row);
     this.selected = row;
-  }
-
-  handleClose(): void {
-    this.selected = null;
   }
 
 }
