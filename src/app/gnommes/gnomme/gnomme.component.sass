@@ -8,20 +8,21 @@
   max-width: 700px
   margin: 0 auto
   position: fixed
-  bottom: 10px
+  top: 10%
   right: 10%
+  bottom: 10%
   left: 10%
 
   button
     position: absolute
-    right: 5px
-    top: 5px
+    right: 10px
+    top: 10px
     background: white
     border: 1px solid white
     border-radius: 4px 
     padding: 5px
   img
-   
+   border-radius: 10px
     width: 100%
 
   ul
@@ -33,7 +34,7 @@
     border: 1px solid grey
     border-radius: 0 0 10px 10px
   li  
-    border-bottom: 1px solid grey
+    border-bottom: 1px solid #e0e0e0
     padding: 10px 0
     background: white
 
@@ -48,7 +49,18 @@
         border-radius: 25px
         display: inline-block
         vertical-align: middle
-  
+
+    .progress-bar-wrapper
+      padding: 0 20px
+      height: 25px
+
+    .mat-progress-bar
+      height: 25px
+
+    .progress-bar-value
+      position: relative
+      top: -20px
+      color: white
   figure
     margin-inline-start: 0
     margin-inline-end: 0
