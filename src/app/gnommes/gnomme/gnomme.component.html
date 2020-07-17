@@ -26,21 +26,14 @@
         <li>
           <div class="progress-bar-wrapper">
             <mat-progress-bar mode="determinate" [value]="avgGnomme"></mat-progress-bar>
-            <span class="progress-bar-value"> {{ avgGnomme | number: '1.0-0' }}  % lived</span>
+            <span class="progress-bar-value"> {{ avgGnomme | number: '1.0-0' }}% old</span>
           </div>
         </li>
         <li> <b>Weight: </b>{{ selected?.weight | number: '1.0-0' }} kgs </li>
         <li> <b>Height: </b>{{ selected?.height | number: '1.0-0' }} cms </li>
         <li> <b>Hair color: </b><i class="hair" [style]="{ background: selected?.hair_color }"></i> </li>
-        <li> <b>Professions: </b>
-          <span>
-            {{ selected?.professions }} </li>
-          </span>
-        <li> <b>Friends: </b> 
-          <span>
-            {{ selected?.friends }} 
-          </span>
-        </li>
+        <li> <b>Professions: </b> {{ selected?.professions }} </li>
+        <li> <b>Friends: </b> {{ selected?.friends }} </li>
       </ul>
     </div>
 </div>

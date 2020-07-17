@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     HttpClientModule,
     MatTableModule,
     MatProgressBarModule,
+    MatIconModule,
+    MatToolbarModule,
     BrowserAnimationsModule
   ],
   providers: [],
