@@ -69,10 +69,16 @@
 
   <div class="gnomme-info" *ngIf="selected">
     <div class="info-content">
-      <div class="img-container">
-        <img [src]="selected.thumbnail">
-        <button (click)="handleClose()">Close</button>
-      </div>
+      <figure>
+        <div class="crop-height">
+          <a [href]="selected.thumbnail" target="_blank">
+            <img class="scale" [src]="selected.thumbnail" />
+          </a>
+        </div> <!-- end .crop-height -->
+        <figcaption>
+          <button (click)="handleClose()">Close</button>
+        </figcaption>
+      </figure>
       <ul>
         <li> <b>Name: </b>{{ selected?.name }} </li>
         <li> <b>Age: </b>{{ selected?.age }} </li>
