@@ -8,6 +8,7 @@ import { GnommeListComponent } from './gnommes/gnomme-list/gnomme-list.component
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
     AppRoutingModule,
     HttpClientModule,
     MatTableModule,
+    MatProgressBarModule,
     BrowserAnimationsModule
   ],
   providers: [],

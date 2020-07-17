@@ -2,6 +2,7 @@ import { Gnommes, Town } from './../../models/gnommes.interface';
 import { Component, OnInit } from '@angular/core';
 import { GnommesService } from './../../services/gnommes.service';
 import { SelectionModel } from '@angular/cdk/collections';
+import { map, sum, max } from 'lodash';
 
 @Component({
   selector: 'app-gnomme-list',
@@ -18,8 +19,10 @@ export class GnommeListComponent implements OnInit {
     'age',
     'height',
   ];
-
-    selection = new SelectionModel<Gnommes>(false, []);
+  selection = new SelectionModel<Gnommes>(false, []);
+  avgAge: number; // the average gnomme age in Town
+  maxAge: number; // the max gnomme age in Town
+  avgHeight: number; // the average gnomme height in Town
 
   constructor(private gnommeService: GnommesService) {
 
@@ -29,10 +32,13 @@ export class GnommeListComponent implements OnInit {
 
   ngOnInit(): void {
 
+    // TODO: Activate this service!!!
+
     /* this.gnommeService.fetchData()
     .subscribe((data: Town) => {
 
       this.gnommes = data.Brastlewark;
+      this.avgAge = this.getAverateAge(this.gnommes);
 
     }); */
     this.gnommes = [
@@ -216,15 +222,21 @@ export class GnommeListComponent implements OnInit {
         ]
       }
     ];
+    this.avgAge = this.getAverateAge(this.gnommes);
+    this.maxAge = this.getMaxAge(this.gnommes);
+  }
+
+  getAverateAge(gnommesList: Gnommes[]): number {
+    return sum(map(gnommesList, 'age')) / gnommesList.length;
+  }
+
+  getMaxAge(gnommesList: Gnommes[]): number {
+    return max(map(gnommesList, 'age'))
   }
 
   handleClick(row: Gnommes): void {
     console.log(row);
     this.selected = row;
-  }
-
-  handleClose(): void {
-    this.selected = null;
   }
 
 }
