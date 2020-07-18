@@ -22,15 +22,10 @@ export class GnommeComponent implements OnChanges{
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.selected) {
-      console.log('ready')
-      // TODO set de % of avg age
-      console.log(this.selected.age)
-      console.log(this.maxAge)
       this.avgGnomme = (this.selected.age * 100) / this.maxAge;
-      // TODO set de % of gnomme age
-      console.log(this.avgGnomme)
     }
   }
+
   handleClose(): void {
     this.selected = null;
   }
