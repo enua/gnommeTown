@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { Gnommes } from 'src/app/models/gnommes.interface';
 
 @Component({
@@ -17,8 +17,13 @@ export class GnommeComponent implements OnChanges{
   @Input()
   maxAge: number;
 
+  @Output()
+  isClosed: EventEmitter<boolean> = new EventEmitter();
+
   avgGnomme: number; // %gnomme age from total
-  constructor() { }
+  constructor() {
+    this.selected = null;
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.selected) {
@@ -28,5 +33,6 @@ export class GnommeComponent implements OnChanges{
 
   handleClose(): void {
     this.selected = null;
+    this.isClosed.emit(true);
   }
 }
