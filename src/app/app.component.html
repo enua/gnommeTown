@@ -1,3 +1,27 @@
-<h1>Gnomme town WIP</h1>
-<app-gnomme></app-gnomme>
-<app-gnomme-list></app-gnomme-list>
+<mat-toolbar color="primary">
+    <button mat-icon-button class="menu-icon" [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>home</mat-icon>
+        <a href="home">
+          <span>Home</span>
+        </a>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>location_city</mat-icon>
+        <a href="list">
+          <span>Citizens</span>
+        </a>
+      </button>
+    </mat-menu>
+    <span>Gnomme Town</span>
+    <!-- <button mat-icon-button class="favorite-icon" aria-label="icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="share-icon" aria-label="icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button> -->
+</mat-toolbar>
+<router-outlet></router-outlet>
