@@ -1,9 +1,22 @@
 <mat-toolbar color="primary">
-    <!-- <button mat-icon-button class="menu-icon" aria-label="icon-button with menu icon">
+    <button mat-icon-button class="menu-icon" [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
-    </button> -->
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>home</mat-icon>
+        <a href="home">
+          <span>Home</span>
+        </a>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>location_city</mat-icon>
+        <a href="list">
+          <span>Citizens</span>
+        </a>
+      </button>
+    </mat-menu>
     <span>Gnomme Town</span>
-    <span class="example-spacer"></span>
     <!-- <button mat-icon-button class="favorite-icon" aria-label="icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
     </button>
@@ -11,4 +24,4 @@
       <mat-icon>share</mat-icon>
     </button> -->
 </mat-toolbar>
-<app-gnomme-list></app-gnomme-list>
+<router-outlet></router-outlet>

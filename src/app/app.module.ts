@@ -14,12 +14,17 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { HomeComponent } from './home/home.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
     AppComponent,
     GnommeComponent,
-    GnommeListComponent
+    GnommeListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +36,9 @@ import { MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
     BrowserAnimationsModule
   ],
   providers: [],
