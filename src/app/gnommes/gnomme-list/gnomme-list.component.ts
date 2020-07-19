@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { GnommesService } from './../../services/gnommes.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { map, sum, max } from 'lodash';
+import { FormControl } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-gnomme-list',
@@ -13,13 +15,24 @@ export class GnommeListComponent implements OnInit {
 
   gnommes: Gnommes[];
   selected: Gnommes;
-  displayedColumns: string[] = [
+  ready: boolean;
+
+  // Material Table data source
+  gnommeSource = new MatTableDataSource(this.gnommes);
+
+  // Material Rows
+  gnommeColumns: string[] = [
     'id',
     'name',
     'age',
-    'height',
   ];
+
+  // Material Filters
+  nameFilter = new FormControl();
+
+  // Single Row Selection
   selection = new SelectionModel<Gnommes>(false, []);
+
   avgAge: number; // the average gnomme age in Town
   maxAge: number; // the max gnomme age in Town
   avgHeight: number; // the average gnomme height in Town
@@ -27,21 +40,33 @@ export class GnommeListComponent implements OnInit {
   constructor(private gnommeService: GnommesService) {
 
     this.gnommes = [];
+    this.ready = false;
 
   }
 
   ngOnInit(): void {
 
+    this.gnommeSource.filterPredicate = this.gnommeFilterPredicate();
+
     // TODO: Activate this service!!!
 
-    /* this.gnommeService.fetchData()
+    this.gnommeService.fetchData()
     .subscribe((data: Town) => {
 
       this.gnommes = data.Brastlewark;
-      this.avgAge = this.getAverateAge(this.gnommes);
+      this.avgAge = this.getAvgAge(this.gnommes);
 
-    }); */
-    this.gnommes = [
+      // this.avgAge = this.getAvgAge(this.gnommes);
+      this.maxAge = this.getMaxAge(this.gnommes);
+
+      // Set Material Data Table Source
+      this.gnommeSource = new MatTableDataSource(this.gnommes);
+
+      // turn off spinner
+      this.ready = true;
+
+    });
+    /* this.gnommes = [
       {
         id: 0,
         name: 'Tobus Quickwhistle',
@@ -222,21 +247,50 @@ export class GnommeListComponent implements OnInit {
         ]
       }
     ];
-    this.avgAge = this.getAverateAge(this.gnommes);
+
+    this.avgAge = this.getAvgAge(this.gnommes);
+
+    // this.avgAge = this.getAvgAge(this.gnommes);
     this.maxAge = this.getMaxAge(this.gnommes);
+
+    // Set Material Data Table Source
+    this.gnommeSource = new MatTableDataSource(this.gnommes); */
+
   }
 
-  getAverateAge(gnommesList: Gnommes[]): number {
+  getAvgAge(gnommesList: Gnommes[]): number {
     return sum(map(gnommesList, 'age')) / gnommesList.length;
   }
 
   getMaxAge(gnommesList: Gnommes[]): number {
-    return max(map(gnommesList, 'age'))
+    return max(map(gnommesList, 'age'));
   }
 
   handleClick(row: Gnommes): void {
-    console.log(row);
     this.selected = row;
+  }
+
+  // gnommeFilterPredicate: required by Material as custom filter predicate
+  gnommeFilterPredicate(): any {
+    const gnommesFiltered = (data: Gnommes, filter: string) => {
+      // Set as table local documentation
+      const dataStr = Object.keys(data).reduce((currentTerm, key) => {
+        return currentTerm + data[key] + '◬';
+      }, '').toLowerCase();
+      // Transform the filter by converting it to lowercase and removing whitespace.
+      const transformedFilter = filter.trim().toLowerCase();
+      return dataStr.indexOf(transformedFilter) !== -1;
+    };
+    return gnommesFiltered;
+  }
+
+  // custom filter
+  gnommeFilter(filterValue: string): void {
+    const filter = {
+      name: filterValue.trim().toLocaleLowerCase(),
+    };
+    this.gnommeSource.filter = filterValue;
+    console.log(this.gnommeSource);
   }
 
 }

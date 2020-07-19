@@ -11,5 +11,5 @@ export interface Gnommes {
  height: number;
  hair_color: string;
  professions: string[];
- friends: string[];
+ friends?: string[];
 }

@@ -11,10 +11,15 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
@@ -31,9 +36,12 @@ import { MatMenuModule } from '@angular/material/menu';
     MatProgressBarModule,
     MatIconModule,
     MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
     BrowserAnimationsModule
   ],
   providers: [],

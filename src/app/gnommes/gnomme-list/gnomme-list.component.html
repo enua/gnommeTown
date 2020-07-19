@@ -1,5 +1,14 @@
 <h4> Brastlewark Citizens </h4>
-<table mat-table [dataSource]="gnommes" class="mat-elevation-z8">
+<mat-form-field>
+  <input 
+    matInput 
+    (keyup)="gnommeFilter($event.target.value)" 
+    placeholder="Find citizen or friends of">
+</mat-form-field>
+<table 
+  mat-table 
+  [dataSource]="gnommeSource"
+  class="mat-elevation-z8">
 
     <!-- Position Column -->
     <ng-container matColumnDef="id">
@@ -18,21 +27,18 @@
       <th mat-header-cell *matHeaderCellDef> Age </th>
       <td mat-cell *matCellDef="let element"> {{ element.age }} </td>
     </ng-container>
-  
-    <!-- Height Column -->
-    <ng-container matColumnDef="height">
-      <th mat-header-cell *matHeaderCellDef> Height </th>
-      <td mat-cell *matCellDef="let element"> {{ element.height }} </td>
-    </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row *matHeaderRowDef="gnommeColumns"></tr>
     <tr 
       mat-row 
-      *matRowDef="let row; columns: displayedColumns;"
+      *matRowDef="let row; columns: gnommeColumns;"
       [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
       (click)="selection.toggle(row); handleClick(row)"
     ></tr>
   </table>
+  <div class="wrapper-spinner">
+    <mat-spinner *ngIf="!ready"></mat-spinner>
+  </div>
 <app-gnomme 
   [selected]="selected" 
   [avgAge]="avgAge"
