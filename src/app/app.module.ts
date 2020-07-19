@@ -14,6 +14,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomeComponent } from './home/home.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MatCardModule } from '@angular/material/card';
     MatToolbarModule,
     MatGridListModule,
     MatCardModule,
+    MatMenuModule,
     BrowserAnimationsModule
   ],
   providers: [],
