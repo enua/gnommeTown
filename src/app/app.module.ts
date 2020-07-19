@@ -11,13 +11,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import { HomeComponent } from './home/home.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
     AppComponent,
     GnommeComponent,
-    GnommeListComponent
+    GnommeListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +31,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatProgressBarModule,
     MatIconModule,
     MatToolbarModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
     BrowserAnimationsModule
   ],
   providers: [],
