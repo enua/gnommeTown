@@ -15,6 +15,7 @@ export class GnommeListComponent implements OnInit {
 
   gnommes: Gnommes[];
   selected: Gnommes;
+  ready: boolean;
 
   // Material Table data source
   gnommeSource = new MatTableDataSource(this.gnommes);
@@ -24,7 +25,6 @@ export class GnommeListComponent implements OnInit {
     'id',
     'name',
     'age',
-    'height',
   ];
 
   // Material Filters
@@ -40,6 +40,7 @@ export class GnommeListComponent implements OnInit {
   constructor(private gnommeService: GnommesService) {
 
     this.gnommes = [];
+    this.ready = false;
 
   }
 
@@ -60,6 +61,9 @@ export class GnommeListComponent implements OnInit {
 
       // Set Material Data Table Source
       this.gnommeSource = new MatTableDataSource(this.gnommes);
+
+      // turn off spinner
+      this.ready = true;
 
     });
     /* this.gnommes = [
@@ -251,6 +255,7 @@ export class GnommeListComponent implements OnInit {
 
     // Set Material Data Table Source
     this.gnommeSource = new MatTableDataSource(this.gnommes); */
+
   }
 
   getAvgAge(gnommesList: Gnommes[]): number {
