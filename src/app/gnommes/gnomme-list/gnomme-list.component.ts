@@ -15,7 +15,7 @@ export class GnommeListComponent implements OnInit {
 
   gnommes: Gnommes[];
   selected: Gnommes;
-  ready: boolean;
+  isReady: boolean;
 
   // Material Table data source
   gnommeSource = new MatTableDataSource(this.gnommes);
@@ -40,7 +40,7 @@ export class GnommeListComponent implements OnInit {
   constructor(private gnommeService: GnommesService) {
 
     this.gnommes = [];
-    this.ready = false;
+    this.isReady = false;
 
   }
 
@@ -63,7 +63,7 @@ export class GnommeListComponent implements OnInit {
       this.gnommeSource = new MatTableDataSource(this.gnommes);
 
       // turn off spinner
-      this.ready = true;
+      this.isReady = true;
 
     });
     /* this.gnommes = [
