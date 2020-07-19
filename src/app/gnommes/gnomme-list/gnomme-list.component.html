@@ -37,8 +37,8 @@
     <tr 
       mat-row 
       *matRowDef="let row; columns: gnommeColumns;"
-      [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
-      (click)="selection.toggle(row); handleClick(row)"
+      [ngClass]="{hovered: row.hovered, highlighted: selected ? selection.isSelected(row) : ''}"
+      (click)="handleClick($event, row)"
     ></tr>
 </table>  
 </div>
@@ -50,9 +50,10 @@
     mode="indeterminate">
   </mat-progress-spinner>
 </mat-card>
-<app-gnomme 
+<app-gnomme
   [selected]="selected" 
   [avgAge]="avgAge"
   [maxAge]="maxAge"
   [avgHeight]="avgHeight"
+  (isClosed)="isClosed($event)"
 ></app-gnomme>
