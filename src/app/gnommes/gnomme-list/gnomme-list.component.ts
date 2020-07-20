@@ -50,7 +50,7 @@ export class GnommeListComponent implements OnInit {
 
     // TODO: Activate this service!!!
 
-    this.gnommeService.fetchData()
+   /*  this.gnommeService.fetchData()
     .subscribe((data: Town) => {
 
       this.gnommes = data.Brastlewark;
@@ -65,8 +65,8 @@ export class GnommeListComponent implements OnInit {
       // turn off spinner
       this.isReady = true;
 
-    });
-    /* this.gnommes = [
+    }); */
+    this.gnommes = [
       {
         id: 0,
         name: 'Tobus Quickwhistle',
@@ -254,7 +254,10 @@ export class GnommeListComponent implements OnInit {
     this.maxAge = this.getMaxAge(this.gnommes);
 
     // Set Material Data Table Source
-    this.gnommeSource = new MatTableDataSource(this.gnommes); */
+    this.gnommeSource = new MatTableDataSource(this.gnommes);
+
+    // turn off spinner
+    this.isReady = true;
 
   }
 
@@ -266,8 +269,13 @@ export class GnommeListComponent implements OnInit {
     return max(map(gnommesList, 'age'));
   }
 
-  handleClick(row: Gnommes): void {
+  handleClick(ev: MouseEvent, row: Gnommes): void {
+    this.selection.toggle(row);
     this.selected = row;
+  }
+
+  isClosed(ev: boolean): void {
+    this.selected = ev ? null : this.selected;
   }
 
   // gnommeFilterPredicate: required by Material as custom filter predicate
@@ -290,7 +298,6 @@ export class GnommeListComponent implements OnInit {
       name: filterValue.trim().toLocaleLowerCase(),
     };
     this.gnommeSource.filter = filterValue;
-    console.log(this.gnommeSource);
   }
 
 }
