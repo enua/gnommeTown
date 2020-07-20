@@ -22,4 +22,5 @@ describe('GnommeComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  // describe('handleClose', () => {});
 });
