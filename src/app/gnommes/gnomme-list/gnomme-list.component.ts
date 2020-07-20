@@ -1,10 +1,12 @@
 import { Gnommes, Town } from './../../models/gnommes.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { GnommesService } from './../../services/gnommes.service';
 import { SelectionModel } from '@angular/cdk/collections';
 import { map, sum, max } from 'lodash';
 import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-gnomme-list',
@@ -16,6 +18,10 @@ export class GnommeListComponent implements OnInit {
   gnommes: Gnommes[];
   selected: Gnommes;
   isReady: boolean;
+
+  
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   // Material Table data source
   gnommeSource = new MatTableDataSource(this.gnommes);
@@ -37,6 +43,7 @@ export class GnommeListComponent implements OnInit {
   maxAge: number; // the max gnomme age in Town
   avgHeight: number; // the average gnomme height in Town
 
+
   constructor(private gnommeService: GnommesService) {
 
     this.gnommes = [];
@@ -48,25 +55,26 @@ export class GnommeListComponent implements OnInit {
 
     this.gnommeSource.filterPredicate = this.gnommeFilterPredicate();
 
-    // TODO: Activate this service!!!
+    this.gnommeService.fetchData()
+      .subscribe((data: Town) => {
 
-   /*  this.gnommeService.fetchData()
-    .subscribe((data: Town) => {
+        this.gnommes = data.Brastlewark;
+        this.avgAge = this.getAvgAge(this.gnommes);
 
-      this.gnommes = data.Brastlewark;
-      this.avgAge = this.getAvgAge(this.gnommes);
+        // this.avgAge = this.getAvgAge(this.gnommes);
+        this.maxAge = this.getMaxAge(this.gnommes);
 
-      // this.avgAge = this.getAvgAge(this.gnommes);
-      this.maxAge = this.getMaxAge(this.gnommes);
+        // Set Material Data Table Source
+        this.gnommeSource = new MatTableDataSource(this.gnommes);
+        this.gnommeSource.sort = this.sort;
+        this.gnommeSource.paginator = this.paginator;
 
-      // Set Material Data Table Source
-      this.gnommeSource = new MatTableDataSource(this.gnommes);
 
-      // turn off spinner
-      this.isReady = true;
+        // turn off spinner
+        this.isReady = true;
 
-    }); */
-    this.gnommes = [
+    });
+/*     this.gnommes = [
       {
         id: 0,
         name: 'Tobus Quickwhistle',
@@ -255,9 +263,11 @@ export class GnommeListComponent implements OnInit {
 
     // Set Material Data Table Source
     this.gnommeSource = new MatTableDataSource(this.gnommes);
+    this.gnommeSource.sort = this.sort;
+    this.gnommeSource.paginator = this.paginator;
 
     // turn off spinner
-    this.isReady = true;
+    this.isReady = true; */
 
   }
 
