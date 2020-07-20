@@ -298,7 +298,6 @@ export class GnommeListComponent implements OnInit {
       name: filterValue.trim().toLocaleLowerCase(),
     };
     this.gnommeSource.filter = filterValue;
-    console.log(this.gnommeSource);
   }
 
 }
