@@ -1,5 +1,5 @@
 export interface Town {
-    Brastlewark: Gnommes[];
+    Brastlewark?: Gnommes[];
 }
 
 export interface Gnommes {

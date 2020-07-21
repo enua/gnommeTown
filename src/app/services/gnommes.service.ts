@@ -1,3 +1,4 @@
+import { Town } from './../models/gnommes.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -11,7 +12,7 @@ export class GnommesService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public fetchData(): Observable<any> {
+  public fetchData(): Observable<Town> {
     return this.httpClient.get(this.GNOMME_DATA);
   }
 }
