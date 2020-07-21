@@ -21,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 
@@ -29,7 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AppComponent,
     GnommeComponent,
     GnommeListComponent,
-    HomeComponent
+    HomeComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
