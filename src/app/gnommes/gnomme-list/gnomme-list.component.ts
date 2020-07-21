@@ -2,7 +2,7 @@ import { Gnommes, Town } from './../../models/gnommes.interface';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GnommesService } from './../../services/gnommes.service';
 import { SelectionModel } from '@angular/cdk/collections';
-import { map, sum, max, shuffle } from 'lodash';
+import { map, sum, max, shuffle, size } from 'lodash';
 import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
@@ -75,7 +75,7 @@ export class GnommeListComponent implements OnInit {
   }
 
   getAvgAge(gnommesList: Gnommes[]): number {
-    return sum(map(gnommesList, 'age')) / gnommesList.length;
+    return sum(map(gnommesList, 'age')) / size(gnommesList) > 0 ? size(gnommesList) : 1;
   }
 
   getMaxAge(gnommesList: Gnommes[]): number {
@@ -87,7 +87,7 @@ export class GnommeListComponent implements OnInit {
     this.selected = row;
   }
 
-  isClosed(ev: boolean): void {
+  handleClosed(ev: boolean): void {
     this.selected = ev ? null : this.selected;
   }
 
