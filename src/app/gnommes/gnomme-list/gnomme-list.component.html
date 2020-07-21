@@ -59,5 +59,11 @@
   [avgAge]="avgAge"
   [maxAge]="maxAge"
   [avgHeight]="avgHeight"
-  (isClosed)="isClosed($event)"
+  (isClosed)="handleClosed()"
 ></app-gnomme>
+
+<div *ngIf="errorData">
+  <p style="color: red; margin-top: 20px; text-align: center;">
+    Error getting the town citizens data.
+  </p>
+</div>
