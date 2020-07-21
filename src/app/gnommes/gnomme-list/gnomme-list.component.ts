@@ -87,8 +87,8 @@ export class GnommeListComponent implements OnInit {
     this.selected = row;
   }
 
-  handleClosed(ev: boolean): void {
-    this.selected = ev ? null : this.selected;
+  handleClosed(): void {
+    this.selected = null;
   }
 
   // gnommeFilterPredicate: required by Material as custom filter predicate

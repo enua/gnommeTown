@@ -19,7 +19,7 @@ export class GnommeComponent implements OnChanges{
   maxAge: number;
 
   @Output()
-  isClosed: EventEmitter<boolean> = new EventEmitter();
+  isClosed: EventEmitter<null> = new EventEmitter();
 
   avgGnomme: number; // %gnomme age from total
   constructor() {
@@ -34,7 +34,7 @@ export class GnommeComponent implements OnChanges{
 
   handleClose(): void {
     this.selected = null;
-    this.isClosed.emit(true);
+    this.isClosed.emit();
   }
 
   getGender(): string {
