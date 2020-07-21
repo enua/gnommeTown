@@ -1,7 +1,8 @@
 # Gnomme Town
 
 Gnomme town is a beatiful place, with hundred of gnomme workers. This project allows you to show their relationship, conditions, their jobs, ...
-Historicly in gnomme town, the end of first name is used as gender. Names ended in vocal is used for females, otherwise is for male.
+
+Historically in gnomme town, the end of first name is used to know the gnomme gender. The names that end up in vocal will be used for females, otherwise is for male.
 
 ## Installation
 
