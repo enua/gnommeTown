@@ -21,14 +21,14 @@ export class GnommeComponent implements OnChanges{
   @Output()
   isClosed: EventEmitter<null> = new EventEmitter();
 
-  avgGnomme: number; // %gnomme age from total
+  percentGnommeAge: number; // %gnomme age from total
   constructor() {
     this.selected = null;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.selected) {
-      this.avgGnomme = (this.selected.age * 100) / this.maxAge;
+      this.percentGnommeAge = (this.selected.age * 100) / this.maxAge;
     }
   }
 

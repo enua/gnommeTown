@@ -25,8 +25,8 @@
           <b>Age: </b> {{ selected?.age }} years</li>
         <li>
           <div class="progress-bar-wrapper">
-            <mat-progress-bar mode="determinate" [value]="avgGnomme"></mat-progress-bar>
-            <span class="progress-bar-value"> {{ avgGnomme | number: '1.0-0' }}% old</span>
+            <mat-progress-bar mode="determinate" [value]="percentGnommeAge"></mat-progress-bar>
+            <span class="progress-bar-value"> {{ percentGnommeAge | number: '1.0-0' }}% old</span>
           </div>
         </li>
         <li> <b>Weight: </b>{{ selected?.weight | number: '1.0-0' }} kgs </li>
