@@ -7,6 +7,7 @@ import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-gnomme-list',
@@ -42,21 +43,34 @@ export class GnommeListComponent implements OnInit {
   maxAge: number; // the max gnomme age in Town
   avgHeight: number; // the average gnomme height in Town
 
+  errorData: string;
+
 
   constructor(private gnommeService: GnommesService) {
 
     this.gnommes = [];
     this.isReady = false;
+    this.errorData = null;
 
   }
 
   ngOnInit(): void {
 
-    this.gnommeService.fetchData()
-      .subscribe((data: Town) => {
-
+    this.observeFetchData().subscribe(
+      (data: Town) => {
         // data with random
         this.gnommes = shuffle(data.Brastlewark);
+
+        // turn off spinner
+        this.isReady = true;
+      },
+      (error: Error) => {
+        console.log(error)
+        this.errorData = error.message;
+        // stop the spinner
+        this.isReady = true;
+      },
+      () => {
         this.avgAge = this.getAvgAge(this.gnommes);
 
         // this.avgAge = this.getAvgAge(this.gnommes);
@@ -67,11 +81,12 @@ export class GnommeListComponent implements OnInit {
         this.gnommeSource.sort = this.sort;
         this.gnommeSource.paginator = this.paginator;
         this.gnommeSource.filterPredicate = this.gnommeFilterPredicate();
+      }
+    );
+  }
 
-        // turn off spinner
-        this.isReady = true;
-
-    });
+  observeFetchData(): Observable<Town> {
+    return this.gnommeService.fetchData();
   }
 
   getAvgAge(gnommesList: Gnommes[]): number {
