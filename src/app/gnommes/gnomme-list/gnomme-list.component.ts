@@ -110,6 +110,7 @@ export class GnommeListComponent implements OnInit {
     const filter = {
       name: filterValue.trim().toLocaleLowerCase(),
     };
+
     this.gnommeSource.filter = filter.name;
   }
 
