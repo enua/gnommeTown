@@ -4,6 +4,8 @@ Gnomme town is a beatiful place, with hundred of gnomme workers. This project al
 
 Historically in gnomme town, the end of first name is used to know the gnomme gender. The names that end up in vocal will be used for females, otherwise is for male.
 
+As we know, all gnommes has new smartphones well updated with latest version of chrome or firefox. Images are being catched and requested only once.
+
 ## Installation
 
 This is Angular 10 based project with some lib dependency.
