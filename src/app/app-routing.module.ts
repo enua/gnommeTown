@@ -1,5 +1,4 @@
 import { HomeComponent } from './home/home.component';
-import { GnommeComponent } from './gnommes/gnomme/gnomme.component';
 import { GnommeListComponent } from './gnommes/gnomme-list/gnomme-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';

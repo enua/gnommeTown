@@ -1,13 +1,13 @@
-import { Gnommes, Town } from './../../models/gnommes.interface';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { GnommesService } from './../../services/gnommes.service';
-import { SelectionModel } from '@angular/cdk/collections';
-import { map, sum, max, shuffle, size } from 'lodash';
 import { FormControl } from '@angular/forms';
+import { SelectionModel } from '@angular/cdk/collections';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
+import { map, sum, max, shuffle, size } from 'lodash';
 import { Observable } from 'rxjs';
+import { Gnommes, Town } from './../../models/gnommes.interface';
+import { GnommesService } from './../../services/gnommes.service';
 
 @Component({
   selector: 'app-gnomme-list',
@@ -90,7 +90,7 @@ export class GnommeListComponent implements OnInit {
   }
 
   getAvgAge(gnommesList: Gnommes[]): number {
-    return sum(map(gnommesList, 'age')) / size(gnommesList) > 0 ? size(gnommesList) : 1;
+    return sum(map(gnommesList, 'age')) / (size(gnommesList) > 0 ? size(gnommesList) : 1);
   }
 
   getMaxAge(gnommesList: Gnommes[]): number {

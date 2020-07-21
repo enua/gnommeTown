@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges, EventEmitter, Output } from '@angular/core';
-import { Gnommes } from 'src/app/models/gnommes.interface';
+import { Component, Input, OnChanges, SimpleChange, SimpleChanges, EventEmitter, Output } from '@angular/core';
 import { words } from 'lodash';
+import { Gnommes } from 'src/app/models/gnommes.interface';
 
 @Component({
   selector: 'app-gnomme',
@@ -22,6 +22,7 @@ export class GnommeComponent implements OnChanges{
   isClosed: EventEmitter<null> = new EventEmitter();
 
   percentGnommeAge: number; // %gnomme age from total
+
   constructor() {
     this.selected = null;
   }
