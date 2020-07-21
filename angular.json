@@ -16,6 +16,9 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
+          "allowedCommonJsDependencies": [
+            "lodash"
+         ],
           "options": {
             "outputPath": "dist/gt",
             "index": "src/index.html",
