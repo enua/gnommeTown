@@ -2,12 +2,11 @@ import { Gnommes, Town } from './../../models/gnommes.interface';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { GnommesService } from './../../services/gnommes.service';
 import { SelectionModel } from '@angular/cdk/collections';
-import { map, sum, max, shuffle, find, number } from 'lodash';
+import { map, sum, max, shuffle } from 'lodash';
 import { FormControl } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { findLast } from '@angular/compiler/src/directive_resolver';
 
 @Component({
   selector: 'app-gnomme-list',
