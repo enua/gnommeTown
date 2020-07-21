@@ -8,6 +8,10 @@ This is Angular 10 based project with some lib dependency.
 [You can follow this link](https://angular.io/guide/setup-local) to get some documentation.
 >To install those you can use `npm i` or `yarn i` in your terminal.
 
+## Run App
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
 ## Specifications
 
 **Filter:** the filter affects to all table properties so when you insert a string the filter returns all objects matches with this filter no matters wich field is. Ie. if you type `Emma` you will see all Emma gnommes named and all the Emma's friends
@@ -22,9 +26,6 @@ This is Angular 10 based project with some lib dependency.
 
 **NavBar menu:** the app has a simple dropdown menu.
 
-## Development advice
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Testing
 
